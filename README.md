@@ -41,6 +41,11 @@ To export a resume, open the editor, choose **Download PDF**, then select
 **Save as PDF** in the browser's print dialog. Review the print preview; print styles remove
 browser headers and footers.
 
+## Deployment
+
+The site is published at https://hardboard.xyz with GitHub Pages. See
+[docs/DEPLOY.md](docs/DEPLOY.md) for the DNS records and setup steps.
+
 ## Project layout
 
 ```text
