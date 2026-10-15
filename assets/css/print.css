@@ -5,9 +5,13 @@
    Elementos con [data-noprint] se ocultan por completo.
    ========================================================================== */
 
+/* Margen de página en 0: el navegador solo imprime fecha, título, URL y
+   "página x/y" dentro del margen de @page, así que sin margen no aparecen.
+   Los márgenes reales del papel se devuelven con padding en .cv-sheet
+   (más abajo), repetido en cada página con box-decoration-break. */
 @page {
   size: letter;
-  margin: 0.5in 0.6in;
+  margin: 0;
 }
 
 @media print {
@@ -46,12 +50,15 @@
     box-shadow: none !important;
   }
 
-  /* La hoja ocupa todo el ancho útil del papel; los márgenes los da @page */
+  /* La hoja ocupa todo el papel; los márgenes (0.5in arriba/abajo, 0.6in
+     a los lados) se aplican como padding y se clonan en cada página. */
   .cv-sheet {
     width: auto !important;
     min-height: 0 !important;
-    padding: 0 !important;
+    padding: 0.5in 0.6in !important;
     box-shadow: none !important;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
   }
 
   /* Sin recuadros de selección sobre las secciones */
