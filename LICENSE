@@ -1,0 +1,79 @@
+Hardboard Study License 1.0
+
+Copyright (c) 2026 Uriel Ezequiel Ortiz Rosales.
+All rights reserved except as expressly granted below.
+
+1. Scope and ownership
+
+This license applies to the original Hardboard source code, documentation and
+assets supplied in this repository (the "Software"). It does not transfer
+ownership of the Software. The copyright holder retains all rights not expressly
+granted. Third-party materials, if any, remain governed by their own licenses;
+this license does not restrict rights granted by those licenses.
+
+2. Permitted study and personal use
+
+You may view and download the Software, keep local copies, run it locally, and
+modify it privately solely for your own noncommercial study, learning, evaluation
+or personal use. You must preserve this license and the copyright notices in
+copies and modifications. Educational use does not authorize public redistribution
+or use in a paid course, paid service or commercial product.
+
+3. GitHub exception and upstream contributions
+
+Nothing in this license limits permissions granted under the applicable GitHub
+Terms of Service by publishing this repository publicly, including viewing and
+forking it through GitHub's functionality. You may maintain a GitHub fork for
+noncommercial study and submit proposed changes to the original repository.
+Retain this license and attribution, and clearly identify modified forks as
+unofficial. This exception does not authorize commercial use, off-platform
+redistribution, public application hosting, or selling the Software.
+
+4. Restrictions
+
+Except for section 3, rights required by applicable law, or separate written
+permission from the copyright holder, you may not:
+
+- distribute, republish, sublicense, sell, rent or otherwise provide the Software
+  or modified versions, in source or compiled form, to third parties;
+- deploy the Software or modified versions as a public or shared hosted service;
+- use the Software or its code in a business, commercial product, paid course,
+  paid service, advertising-supported service or other activity directed toward
+  commercial advantage or monetary compensation;
+- remove copyright or license notices, claim authorship of the original work,
+  or imply the author's endorsement of a derivative work.
+
+5. Resume output
+
+Your personal data remains yours. The restrictions on redistributing the Software
+do not restrict sharing, printing or submitting the resumes you create with it,
+including for job applications. This exception does not permit selling access to
+the Software or offering a paid resume-generation service based on it.
+
+6. Contributions
+
+Contributors retain ownership of their original contributions. By intentionally
+submitting a contribution for inclusion, you grant the copyright holder a
+nonexclusive, worldwide, royalty-free license to use, modify and distribute that
+contribution as part of Hardboard under this license. Contributions must be your
+own work or material you have permission to submit under these terms. No transfer
+of another person's copyright is implied.
+
+7. Termination and other rights
+
+Permissions under this license terminate automatically if you violate its terms.
+Upon termination, stop using and delete copies held under this license, except
+where retention or use is required or permitted independently by applicable law
+or GitHub's applicable terms. No trademark rights or endorsement are granted.
+For permissions beyond this license, contact UrielOrtizv1000 through the original
+Hardboard repository on GitHub.
+
+8. Disclaimer
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+PURPOSE AND NONINFRINGEMENT. TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW,
+THE COPYRIGHT HOLDER AND CONTRIBUTORS SHALL NOT BE LIABLE FOR ANY CLAIM,
+DAMAGES OR OTHER LIABILITY ARISING FROM THE SOFTWARE OR ITS USE.
+
+This is a custom source-available license, not an open-source license.
