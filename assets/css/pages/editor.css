@@ -1,0 +1,289 @@
+/* ==========================================================================
+   PÁGINA: EDITOR (editor.html)
+   Layout de aplicación: cabecera + dos paneles (formulario | vista previa).
+   En pantallas < 960px se muestra un panel a la vez (pestañas).
+   ========================================================================== */
+
+.app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+}
+
+.app__body {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(380px, 460px) minmax(0, 1fr);
+}
+
+/* --- Pestañas Editar / Vista previa (solo móvil) --- */
+.view-tabs {
+  display: none;
+  border-top: 1px solid var(--line);
+}
+
+.view-tabs__btn {
+  flex: 1;
+  padding: 12px;
+  border-bottom: 2px solid transparent;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.view-tabs__btn[aria-selected="true"] {
+  border-bottom-color: var(--fg);
+}
+
+/* ==========================================================================
+   PANEL IZQUIERDO: FORMULARIO
+   ========================================================================== */
+
+.panel-editor {
+  position: relative;
+  overflow-y: auto;
+  background: var(--bg);
+  border-right: 1px solid var(--line);
+}
+
+.panel-editor__intro {
+  padding: 32px var(--gutter-panel) 20px;
+}
+
+.panel-editor__status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.panel-editor__title {
+  margin-top: 14px;
+  font-size: 30px;
+  font-weight: 300;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.panel-editor__title strong {
+  font-weight: 700;
+}
+
+.panel-editor__tools {
+  display: flex;
+  gap: 4px;
+  margin: 16px 0 0 -6px;
+}
+
+.panel-editor__sections {
+  padding: 0 var(--gutter-panel);
+}
+
+/* --- Acordeón de secciones --- */
+.accordion {
+  border-bottom: 1px solid var(--line);
+}
+
+.accordion__head {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.accordion__toggle {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 0;
+  text-align: left;
+}
+
+.accordion__title {
+  overflow: hidden;
+  font-size: 15px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.accordion__title.is-hidden {
+  opacity: .45;
+}
+
+.accordion__caret {
+  width: 16px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 14px;
+}
+
+.accordion__body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-bottom: 22px;
+}
+
+/* Etiquetas "Obligatoria" / "Oculta" */
+.badge {
+  flex: none;
+  padding: 2px 6px;
+  border: 1px solid var(--fg);
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.badge--muted {
+  border-color: var(--line-strong);
+  color: var(--muted);
+}
+
+/* --- Tarjeta de entrada (una escuela, un empleo, un proyecto…) --- */
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.stack--wide {
+  gap: 14px;
+}
+
+.entry-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--line);
+}
+
+.entry-card__tools {
+  display: flex;
+  justify-content: flex-end;
+  gap: 2px;
+}
+
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.contact-add {
+  margin-top: 8px;
+}
+
+.section-tools {
+  display: flex;
+  gap: 4px;
+  margin-left: -6px;
+}
+
+/* --- Añadir sección opcional --- */
+.add-section {
+  padding: 24px 0 48px;
+}
+
+.add-section__label {
+  margin-bottom: 10px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.add-section__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+/* ==========================================================================
+   PANEL DERECHO: VISTA PREVIA
+   ========================================================================== */
+
+.panel-preview {
+  min-width: 0;
+  overflow-y: auto;
+  background: var(--paper);
+}
+
+.preview-bar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 12px var(--gutter-preview);
+  background: var(--glass-paper);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.preview-bar__group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.preview-bar__group--fonts {
+  gap: 2px;
+}
+
+.preview-bar__title {
+  color: var(--fg);
+}
+
+.preview-bar__fonts-label {
+  margin-right: 6px;
+}
+
+.preview-stage {
+  padding: 32px var(--gutter-preview) 64px;
+}
+
+/* ==========================================================================
+   RESPONSIVE: un solo panel visible (según data-view en .app)
+   ========================================================================== */
+
+@media (max-width: 959px) {
+  .app__body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .view-tabs {
+    display: flex;
+  }
+
+  .app[data-view="edit"] .panel-preview,
+  .app[data-view="preview"] .panel-editor {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-header--app .site-header__inner {
+    flex-wrap: wrap;
+  }
+}

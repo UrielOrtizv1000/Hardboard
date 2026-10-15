@@ -1,0 +1,127 @@
+/* ==========================================================================
+   PÁGINA: LANDING (index.html)
+   Secciones: hero → ejemplo de CV → donaciones (ver también footer.css).
+   ========================================================================== */
+
+.landing {
+  min-height: 100vh;
+}
+
+.landing__main {
+  max-width: var(--page-max);
+  margin: 0 auto;
+}
+
+/* --- Hero --- */
+.hero {
+  min-height: min(80vh, 660px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 96px var(--gutter);
+}
+
+/* Línea pequeña sobre el título: "CV estilo Harvard • Gratis" */
+.kicker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.hero__title {
+  margin-top: 18px;
+  font-size: clamp(44px, 7.4vw, 84px);
+  font-weight: 300;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+.hero__title strong,
+.example__title strong {
+  font-weight: 700;
+}
+
+.hero__sub {
+  max-width: 540px;
+  margin-top: 24px;
+  font-size: 16px;
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+.hero__cta {
+  align-self: flex-start;
+  margin-top: 36px;
+}
+
+/* Sacudida periódica para llamar la atención sobre el CTA.
+   Solo se activa si el usuario no pidió movimiento reducido. */
+@media (prefers-reduced-motion: no-preference) {
+  .hero__cta {
+    animation: cta-shake 4s 1.5s infinite;
+  }
+}
+
+@keyframes cta-shake {
+  0%   { transform: translateX(0); }
+  3%   { transform: translateX(-3px) rotate(-1.2deg); }
+  6%   { transform: translateX(3px) rotate(1.2deg); }
+  9%   { transform: translateX(-2px) rotate(-0.6deg); }
+  12%  { transform: translateX(2px) rotate(0.6deg); }
+  15%, 100% { transform: translateX(0); }
+}
+
+/* --- Ejemplo de CV --- */
+.example {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 56px;
+  padding: 24px var(--gutter) 96px;
+}
+
+.example__intro {
+  flex: 1 1 260px;
+  max-width: 330px;
+  position: sticky;
+  top: 110px;
+}
+
+.example__title {
+  font-size: 34px;
+  font-weight: 300;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.example__text {
+  margin-top: 16px;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--muted);
+  text-wrap: pretty;
+}
+
+.example__link {
+  margin-top: 24px;
+}
+
+.example__preview {
+  flex: 2 1 480px;
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* En pantallas angostas el texto deja de ser fijo */
+@media (max-width: 720px) {
+  .example__intro {
+    position: static;
+    max-width: none;
+  }
+}

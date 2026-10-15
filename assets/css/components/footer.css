@@ -1,0 +1,44 @@
+/* ==========================================================================
+   COMPONENTES: PIE DE PÁGINA Y BANNER DE DONACIONES
+   ========================================================================== */
+
+/* --- Pie de página --- */
+.site-footer {
+  border-top: 1px solid var(--line);
+}
+
+.site-footer__inner {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 20px var(--gutter);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* --- Banner de donaciones ---
+   El botón se conecta con services/donations.js (ver backend/README.md). */
+.donate {
+  padding: 0 var(--gutter) 72px;
+}
+
+.donate__box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 22px 26px;
+  border: 1px solid var(--line-strong);
+}
+
+.donate__text {
+  max-width: 560px;
+  font-size: 15px;
+  line-height: 1.5;
+  text-wrap: pretty;
+}

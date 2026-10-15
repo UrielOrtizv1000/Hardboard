@@ -1,0 +1,189 @@
+/* ==========================================================================
+   COMPONENTE: HOJA DEL CV (estilo Harvard)
+   Se usa tanto en el ejemplo de la landing como en la vista previa del
+   editor. Mide 816px de ancho (carta a 96dpi); el escalado visual lo hace
+   components/sheet-scaler.js. Los colores son fijos (papel blanco) en ambos
+   temas.
+   ========================================================================== */
+
+.cv-sheet {
+  position: relative;
+  width: 816px;
+  padding: 48px 58px;
+  background: #fff;
+  color: #000;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 1.38;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .05), 0 14px 40px rgba(0, 0, 0, .07);
+}
+
+/* Tipografías seleccionables */
+.cv-sheet--times   { font-family: "Times New Roman", Times, serif; }
+.cv-sheet--georgia { font-family: Georgia, serif; }
+
+/* Hoja de tamaño carta fija (ejemplo de la landing) */
+.cv-sheet--fixed {
+  height: 1056px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, .08);
+}
+
+/* --- Bloques editables (cabecera y secciones) --- */
+.cv-block--clickable {
+  cursor: pointer;
+}
+
+.cv-block.is-active {
+  outline: 1px dashed #9a9a9a;
+  outline-offset: 5px;
+}
+
+/* --- Cabecera --- */
+.cv-name {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.cv-contacts,
+.cv-tagline {
+  text-align: center;
+  font-size: 11.5px;
+}
+
+.cv-contacts { margin-top: 4px; }
+.cv-tagline  { margin-top: 3px; }
+
+.cv-sep  { padding: 0 4px; }
+.cv-dash { padding: 0 5px; }
+
+.cv-link {
+  color: #1a56c9;
+  text-decoration: none;
+}
+
+/* Texto guía que NO se imprime (campos vacíos) */
+.cv-placeholder {
+  color: #c4c4c4;
+}
+
+/* --- Secciones --- */
+.cv-section {
+  margin-top: 16px;
+}
+
+.cv-section__title {
+  margin-bottom: 6px;
+  padding-bottom: 2px;
+  border-bottom: 1.5px solid #000;
+  font-size: 13.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  break-after: avoid;
+}
+
+/* Lista de entradas (educación, experiencia, proyectos) */
+.cv-entries {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.cv-entry {
+  break-inside: avoid;
+}
+
+/* Fila "izquierda ... fecha a la derecha" */
+.cv-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.cv-row__date {
+  font-size: 11.5px;
+  white-space: nowrap;
+}
+
+.cv-desc        { margin-top: 2px; white-space: pre-wrap; }
+.cv-desc--loose { margin-top: 3px; }
+
+.cv-sheet ul {
+  margin: 3px 0 0;
+  padding-left: 18px;
+}
+
+.cv-sheet li {
+  margin: 1px 0;
+}
+
+.cv-text {
+  white-space: pre-wrap;
+}
+
+/* --- Habilidades: dos columnas --- */
+.cv-skills {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 28px;
+}
+
+/* --- Cursos e idiomas --- */
+.cv-courses {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  break-inside: avoid;
+}
+
+.cv-courses__langs {
+  max-width: 50%;
+  text-align: right;
+}
+
+/* --- Marcas de salto de página (solo en pantalla) --- */
+.cv-sheet__mark {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 0;
+  border-top: 1px dashed #b9b9b9;
+  pointer-events: none;
+}
+
+.cv-sheet__mark-label {
+  position: absolute;
+  right: 8px;
+  top: -9px;
+  padding: 0 6px;
+  background: #fff;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #999;
+}
+
+/* ==========================================================================
+   ESCALADOR DE HOJA
+   Reduce visualmente la hoja de 816px para que quepa en su contenedor.
+   El tamaño real (ancho/alto/escala) lo calcula sheet-scaler.js.
+   ========================================================================== */
+
+.sheet-scaler__wrap {
+  position: relative;
+  margin: 0 auto;
+}
+
+.sheet-scaler__inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 816px;
+  transform-origin: top left;
+}

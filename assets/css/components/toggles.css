@@ -1,0 +1,96 @@
+/* ==========================================================================
+   COMPONENTES: SELECTOR DE IDIOMA Y BOTÓN DE TEMA
+   El estado visual depende de <html lang> y <html data-theme>,
+   por lo que no requiere JavaScript para animarse ni cambiar de icono.
+   ========================================================================== */
+
+/* --- Selector ES / EN --- */
+.lang-switch {
+  position: relative;
+  display: flex;
+  border: 1px solid var(--line-strong);
+  padding: 2px;
+}
+
+/* Pastilla que se desliza bajo el idioma activo */
+.lang-switch__thumb {
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  left: 2px;
+  width: calc(50% - 2px);
+  background: var(--fg);
+  transition: left .3s var(--ease-out);
+}
+
+html[lang="en"] .lang-switch__thumb {
+  left: 50%;
+}
+
+.lang-switch__btn {
+  position: relative;
+  z-index: 1;
+  padding: 5px 11px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  transition: color .25s;
+}
+
+.lang-switch__btn[aria-pressed="true"] {
+  color: var(--bg);
+}
+
+.lang-switch__btn:hover {
+  opacity: .8;
+}
+
+/* --- Botón claro / oscuro --- */
+.theme-toggle {
+  width: 34px;
+  height: 34px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
+  transition: border-color .2s, transform .2s;
+}
+
+.theme-toggle:hover {
+  border-color: var(--fg);
+  transform: scale(1.06);
+}
+
+.theme-toggle__icons {
+  display: flex;
+}
+
+/* Tema claro muestra la luna; tema oscuro muestra el sol */
+.theme-toggle__icon--sun {
+  display: none;
+}
+
+html[data-theme="dark"] .theme-toggle__icon--sun {
+  display: block;
+}
+
+html[data-theme="dark"] .theme-toggle__icon--moon {
+  display: none;
+}
+
+/* Giro del icono; la clase la añade/quita header-controls.js */
+.theme-toggle.is-spinning .theme-toggle__icons {
+  animation: theme-spin .42s var(--ease-out);
+}
+
+@keyframes theme-spin {
+  from { transform: rotate(-120deg) scale(.4); opacity: 0; }
+  to   { transform: none; opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle.is-spinning .theme-toggle__icons { animation: none; }
+}
