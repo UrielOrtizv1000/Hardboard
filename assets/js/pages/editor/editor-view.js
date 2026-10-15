@@ -49,15 +49,15 @@
         { field: 'subtitle', label: 'subtitle', ph: 'phSubtitle' }
       ] },
       { row: 'link-date', fields: [
-        { field: 'link', label: 'linkLine', phLiteral: 'GitHub: github.com/usuario/repo' },
-        { field: 'date', label: 'datesOpt', phLiteral: '2024' }
+        { field: 'link', label: 'linkLine', ph: 'phLinkLine' },
+        { field: 'date', label: 'datesOpt', ph: 'phYear' }
       ] },
       { field: 'desc', label: 'desc', ph: 'phProjDesc', multiline: true },
       { field: 'bullets', label: 'contribution', ph: 'phContrib', multiline: true }
     ],
     skills: [
       { field: 'label', label: 'label', ph: 'phSkillLabel' },
-      { field: 'items', label: 'skills', phLiteral: 'Excel, SAP, Power BI.' }
+      { field: 'items', label: 'skills', ph: 'phSkillItems' }
     ]
   };
 
@@ -69,7 +69,7 @@
     courses: [
       { row: 'label-value', fields: [
         { field: 'coursesLabel', label: 'label', ph: 'coursesWord' },
-        { field: 'courses', label: 'coursesLines', phLiteral: 'ITIL 4 Foundation — Udemy.', multiline: true }
+        { field: 'courses', label: 'coursesLines', ph: 'phCourseLines', multiline: true }
       ] },
       { row: 'label-value', fields: [
         { field: 'languagesLabel', label: 'label', ph: 'languagesWord' },

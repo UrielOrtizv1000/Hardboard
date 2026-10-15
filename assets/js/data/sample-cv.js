@@ -11,10 +11,10 @@
 
   /* Datos que NO cambian entre idiomas */
   const PERSON = { name: 'Alex Example' };
-  const PROJECT_LINKS = [
-    'Project: example.com/projects/resiliencia-k8s',
-    'Project: example.com/projects/bookstore'
-  ];
+  const PROJECT_LINKS = {
+    es: ['Proyecto: example.com/projects/resiliencia-k8s', 'Proyecto: example.com/projects/bookstore'],
+    en: ['Project: example.com/projects/resiliencia-k8s', 'Project: example.com/projects/bookstore']
+  };
 
   /* Contenido traducible */
   const CONTENT = {
@@ -88,7 +88,7 @@
   };
 
   /** Convierte el contenido de un idioma al modelo de CV (con ids nuevos). */
-  function build(c) {
+  function build(c, lang) {
     return {
       font: 'arial',
       personal: {
@@ -114,7 +114,7 @@
         {
           id: uid(), type: 'projects', title: c.projectsTitle,
           entries: c.projects.map((p, i) => ({
-            id: uid(), name: p.name, subtitle: p.subtitle, link: PROJECT_LINKS[i],
+            id: uid(), name: p.name, subtitle: p.subtitle, link: PROJECT_LINKS[lang][i],
             date: '', desc: p.desc, bullets: p.bullets
           }))
         },
@@ -135,6 +135,7 @@
 
   /** CV de ejemplo en el idioma indicado ('es' por defecto). */
   HB.sampleCv = function sampleCv(lang) {
-    return build(CONTENT[lang === 'en' ? 'en' : 'es']);
+    const key = lang === 'en' ? 'en' : 'es';
+    return build(CONTENT[key], key);
   };
 })(window.HB);

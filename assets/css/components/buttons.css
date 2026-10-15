@@ -172,3 +172,28 @@
 .download-menu__item:hover,
 .download-menu__item:focus-visible { background: var(--paper); }
 .download-menu__item.is-busy { opacity: .5; cursor: progress; }
+
+/* --- Diálogo "archivo listo" (descarga en móvil) --- */
+.file-dialog {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(0, 0, 0, .45);
+}
+.file-dialog__box {
+  width: 100%;
+  max-width: 380px;
+  padding: 20px;
+  background: var(--bg);
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  text-align: center;
+}
+.file-dialog__title { margin: 0 0 4px; font-weight: 600; }
+.file-dialog__name { margin: 0 0 16px; color: var(--muted); font-size: 13px; word-break: break-word; }
+.file-dialog__actions { display: flex; flex-direction: column; gap: 10px; }
+.file-dialog__actions > * { justify-content: center; text-align: center; text-decoration: none; }
