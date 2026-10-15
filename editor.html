@@ -61,10 +61,14 @@
             </span>
           </button>
 
-          <!-- Abre el diálogo de impresión → "Guardar como PDF" -->
-          <button type="button" class="link-cta link-cta--sm" data-action="print">
+          <!-- Descarga directa; el archivo se llama como el usuario (assets/js/pages/editor/export.js) -->
+          <button type="button" class="link-cta link-cta--sm" data-action="download" data-format="pdf" data-i18n-aria-label="editor.download">
             <span aria-hidden="true">→</span>
-            <span class="link-cta__label" data-i18n="editor.download">Descargar PDF</span>
+            <span class="link-cta__label">PDF</span>
+          </button>
+          <button type="button" class="link-cta link-cta--sm" data-action="download" data-format="docx" data-i18n-aria-label="editor.downloadDocx">
+            <span aria-hidden="true">→</span>
+            <span class="link-cta__label">DOCX</span>
           </button>
         </div>
       </div>
@@ -96,7 +100,7 @@
 
           <div class="panel-editor__tools">
             <!-- El texto de este botón cambia a "¿Seguro?" (lo gestiona main.js) -->
-            <button type="button" class="btn-mono" data-action="blank" data-i18n="editor.blank">Hoja en blanco</button>
+            <button type="button" class="btn-mono btn-mono--highlight" data-action="blank" data-i18n="editor.blank">Hoja en blanco</button>
             <button type="button" class="btn-mono" data-action="sample" data-i18n="editor.loadSample">Cargar ejemplo</button>
           </div>
         </div>
@@ -172,6 +176,7 @@
 
   <script src="assets/js/pages/editor/store.js"></script>
   <script src="assets/js/pages/editor/editor-view.js"></script>
+  <script src="assets/js/pages/editor/export.js"></script>
   <script src="assets/js/pages/editor/actions.js"></script>
   <script src="assets/js/pages/editor/main.js"></script>
 </body>

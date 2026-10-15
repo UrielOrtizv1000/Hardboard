@@ -32,6 +32,8 @@ HB.i18n.register('en', {
   editor: {
     docTitle: 'Editor — Hardboard.',
     download: 'Download PDF',
+    downloadDocx: 'Download DOCX',
+    exportError: 'Could not generate the file. Check your connection and try again.',
     edit: 'Edit',
     preview: 'Preview',
     autosaved: 'Autosaved',

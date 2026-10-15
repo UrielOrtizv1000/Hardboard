@@ -1,8 +1,8 @@
 # Hardboard
 
 Hardboard is a browser-based resume editor with a Harvard-style layout. Fill in
-your details, organize sections, preview the page and use your browser's print
-dialog to save a PDF.
+your details, organize sections, preview the page and download it directly as a
+PDF or DOCX named after you.
 
 Built by **Uriel Ezequiel Ortiz Rosales** with HTML, CSS and plain JavaScript.
 The frontend has no package dependencies or build step.
@@ -16,7 +16,9 @@ The frontend includes:
 - Profile, education and experience sections, plus optional skills, projects,
   courses and custom sections.
 - Section ordering, editable entries and Arial, Times or Georgia resume fonts.
-- Print styles for PDF output through the browser's **Save as PDF** option.
+- Direct **PDF** and **DOCX** download (no print dialog), named with the full name on the resume.
+  The PDF embeds real Unicode fonts (Arimo, Tinos, Gelasio), so ñ, accents and other
+  Latin/Greek/Cyrillic text render correctly. Export libraries and fonts load from a CDN on first download.
 
 The donations backend is **not implemented**. The repository contains its proposed
 API contract and a disabled frontend client; the donation button does not process
@@ -37,9 +39,8 @@ python -m http.server 5500 --bind 127.0.0.1
 Open `http://127.0.0.1:5500`. Python is optional and is only used here as a static
 file server. There is no installation or build command for the frontend.
 
-To export a resume, open the editor, choose **Download PDF**, then select
-**Save as PDF** in the browser's print dialog. Review the print preview; print styles remove
-browser headers and footers.
+To export a resume, open the editor and choose **PDF** or **DOCX**. The file downloads
+immediately as `<Full Name>.pdf` / `<Full Name>.docx` (or `CV.*` if the name is empty).
 
 ## Deployment
 
