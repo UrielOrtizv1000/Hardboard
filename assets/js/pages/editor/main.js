@@ -129,7 +129,7 @@
   // Clic en cualquier elemento con data-action
   document.addEventListener('click', (event) => {
     const trigger = event.target.closest('[data-action]');
-    if (trigger) HB.editorActions.dispatch(trigger.dataset.action, trigger.dataset);
+    if (trigger) HB.editorActions.dispatch(trigger.dataset.action, trigger.dataset, trigger);
   });
 
   /* ----- Arranque ----- */

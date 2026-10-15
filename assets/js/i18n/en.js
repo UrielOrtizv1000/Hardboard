@@ -15,8 +15,7 @@ HB.i18n.register('en', {
     docTitle: 'Hardboard. — CV',
     example: 'Example',
     create: 'Build my CV',
-    kicker: 'Harvard-style CV',
-    free: 'Free',
+    kicker: 'Welcome to',
     h1a: 'A résumé',
     h1b: 'to ignore',
     sub: 'Fill in your details, watch the sheet update live and download it as a PDF.',
@@ -32,6 +31,8 @@ HB.i18n.register('en', {
   editor: {
     docTitle: 'Editor — Hardboard.',
     download: 'Download PDF',
+    downloadDocx: 'Download DOCX',
+    exportError: 'Could not generate the file. Check your connection and try again.',
     edit: 'Edit',
     preview: 'Preview',
     autosaved: 'Autosaved',

@@ -20,8 +20,7 @@ HB.i18n.register('es', {
     docTitle: 'Hardboard. — CV',
     example: 'Ejemplo',
     create: 'Crear mi CV',
-    kicker: 'CV estilo Harvard',
-    free: 'Gratis',
+    kicker: 'Welcome to',
     h1a: 'Un currículum',
     h1b: 'de ignorar',
     sub: 'Llena tus datos, mira la hoja en vivo y descárgala en PDF.',
@@ -37,6 +36,8 @@ HB.i18n.register('es', {
   editor: {
     docTitle: 'Editor — Hardboard.',
     download: 'Descargar PDF',
+    downloadDocx: 'Descargar DOCX',
+    exportError: 'No se pudo generar el archivo. Revisa tu conexión e inténtalo de nuevo.',
     edit: 'Editar',
     preview: 'Vista previa',
     autosaved: 'Se guarda solo',

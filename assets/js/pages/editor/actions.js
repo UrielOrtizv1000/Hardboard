@@ -58,14 +58,20 @@
     'view': (d) => store.setUi({ view: d.view }),
     'font': (d) => store.mutateCv((cv) => { cv.font = d.font; }),
 
-    'print': () => {
-      const previousTitle = document.title;
-      const name = (store.getState().cv.personal.name || '').trim();
-      document.title = name ? 'CV - ' + name : 'CV'; // Nombre sugerido del PDF
-      setTimeout(() => {
-        window.print();
-        document.title = previousTitle;
-      }, 50);
+    // Descarga directa (sin diálogo de impresión); el archivo lleva el nombre del usuario
+    'download': async (d, trigger) => {
+      if (trigger.disabled) return;
+      trigger.disabled = true;
+      trigger.classList.add('is-busy');
+      try {
+        await HB.cvExport.download(d.format, store.getState().cv);
+      } catch (error) {
+        console.error(error);
+        window.alert(HB.i18n.t('editor.exportError', currentLang()));
+      } finally {
+        trigger.disabled = false;
+        trigger.classList.remove('is-busy');
+      }
     },
 
     /* Contenido completo */
@@ -114,10 +120,10 @@
   };
 
   /** Ejecuta la acción por nombre. Devuelve true si el editor la conocía. */
-  function dispatch(name, dataset) {
+  function dispatch(name, dataset, trigger) {
     const handler = HANDLERS[name];
     if (!handler) return false;
-    handler(dataset);
+    handler(dataset, trigger);
     return true;
   }
 
