@@ -61,15 +61,18 @@
             </span>
           </button>
 
-          <!-- Descarga directa; el archivo se llama como el usuario (assets/js/pages/editor/export.js) -->
-          <button type="button" class="link-cta link-cta--sm" data-action="download" data-format="pdf" data-i18n-aria-label="editor.download">
-            <span aria-hidden="true">→</span>
-            <span class="link-cta__label">PDF</span>
-          </button>
-          <button type="button" class="link-cta link-cta--sm" data-action="download" data-format="docx" data-i18n-aria-label="editor.downloadDocx">
-            <span aria-hidden="true">→</span>
-            <span class="link-cta__label">DOCX</span>
-          </button>
+          <!-- Descarga directa: un solo botón que despliega PDF / DOCX (assets/js/pages/editor/export.js) -->
+          <div class="download-menu" data-download-menu>
+            <button type="button" class="link-cta link-cta--sm download-menu__trigger" data-action="toggle-download" aria-haspopup="true" aria-expanded="false">
+              <span aria-hidden="true">→</span>
+              <span class="link-cta__label" data-i18n="editor.downloadMenu">Download</span>
+              <svg class="download-menu__caret" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5"/></svg>
+            </button>
+            <div class="download-menu__list" role="menu" hidden>
+              <button type="button" role="menuitem" class="download-menu__item" data-action="download" data-format="pdf" data-i18n-aria-label="editor.download">PDF</button>
+              <button type="button" role="menuitem" class="download-menu__item" data-action="download" data-format="docx" data-i18n-aria-label="editor.downloadDocx">DOCX</button>
+            </div>
+          </div>
         </div>
       </div>
 
