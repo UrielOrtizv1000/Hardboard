@@ -1,79 +1,75 @@
-Hardboard Study License 1.0
+Required Notice: Copyright (c) 2026 Uriel Ezequiel Ortiz Rosales (https://github.com/UrielOrtizv1000/Hardboard)
 
-Copyright (c) 2026 Uriel Ezequiel Ortiz Rosales.
-All rights reserved except as expressly granted below.
+# PolyForm Noncommercial License 1.0.0
 
-1. Scope and ownership
+<https://polyformproject.org/licenses/noncommercial/1.0.0>
 
-This license applies to the original Hardboard source code, documentation and
-assets supplied in this repository (the "Software"). It does not transfer
-ownership of the Software. The copyright holder retains all rights not expressly
-granted. Third-party materials, if any, remain governed by their own licenses;
-this license does not restrict rights granted by those licenses.
+## Acceptance
 
-2. Permitted study and personal use
+In order to get any license under these terms, you must agree to them as both strict obligations and conditions to all your licenses.
 
-You may view and download the Software, keep local copies, run it locally, and
-modify it privately solely for your own noncommercial study, learning, evaluation
-or personal use. You must preserve this license and the copyright notices in
-copies and modifications. Educational use does not authorize public redistribution
-or use in a paid course, paid service or commercial product.
+## Copyright License
 
-3. GitHub exception and upstream contributions
+The licensor grants you a copyright license for the software to do everything you might do with the software that would otherwise infringe the licensor's copyright in it for any permitted purpose.  However, you may only distribute the software according to [Distribution License](#distribution-license) and make changes or new works based on the software according to [Changes and New Works License](#changes-and-new-works-license).
 
-Nothing in this license limits permissions granted under the applicable GitHub
-Terms of Service by publishing this repository publicly, including viewing and
-forking it through GitHub's functionality. You may maintain a GitHub fork for
-noncommercial study and submit proposed changes to the original repository.
-Retain this license and attribution, and clearly identify modified forks as
-unofficial. This exception does not authorize commercial use, off-platform
-redistribution, public application hosting, or selling the Software.
+## Distribution License
 
-4. Restrictions
+The licensor grants you an additional copyright license to distribute copies of the software.  Your license to distribute covers distributing the software with changes and new works permitted by [Changes and New Works License](#changes-and-new-works-license).
 
-Except for section 3, rights required by applicable law, or separate written
-permission from the copyright holder, you may not:
+## Notices
 
-- distribute, republish, sublicense, sell, rent or otherwise provide the Software
-  or modified versions, in source or compiled form, to third parties;
-- deploy the Software or modified versions as a public or shared hosted service;
-- use the Software or its code in a business, commercial product, paid course,
-  paid service, advertising-supported service or other activity directed toward
-  commercial advantage or monetary compensation;
-- remove copyright or license notices, claim authorship of the original work,
-  or imply the author's endorsement of a derivative work.
+You must ensure that anyone who gets a copy of any part of the software from you also gets a copy of these terms or the URL for them above, as well as copies of any plain-text lines beginning with `Required Notice:` that the licensor provided with the software.  For example:
 
-5. Resume output
+> Required Notice: Copyright Yoyodyne, Inc. (http://example.com)
 
-Your personal data remains yours. The restrictions on redistributing the Software
-do not restrict sharing, printing or submitting the resumes you create with it,
-including for job applications. This exception does not permit selling access to
-the Software or offering a paid resume-generation service based on it.
+## Changes and New Works License
 
-6. Contributions
+The licensor grants you an additional copyright license to make changes and new works based on the software for any permitted purpose.
 
-Contributors retain ownership of their original contributions. By intentionally
-submitting a contribution for inclusion, you grant the copyright holder a
-nonexclusive, worldwide, royalty-free license to use, modify and distribute that
-contribution as part of Hardboard under this license. Contributions must be your
-own work or material you have permission to submit under these terms. No transfer
-of another person's copyright is implied.
+## Patent License
 
-7. Termination and other rights
+The licensor grants you a patent license for the software that covers patent claims the licensor can license, or becomes able to license, that you would infringe by using the software.
 
-Permissions under this license terminate automatically if you violate its terms.
-Upon termination, stop using and delete copies held under this license, except
-where retention or use is required or permitted independently by applicable law
-or GitHub's applicable terms. No trademark rights or endorsement are granted.
-For permissions beyond this license, contact UrielOrtizv1000 through the original
-Hardboard repository on GitHub.
+## Noncommercial Purposes
 
-8. Disclaimer
+Any noncommercial purpose is a permitted purpose.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
-PURPOSE AND NONINFRINGEMENT. TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW,
-THE COPYRIGHT HOLDER AND CONTRIBUTORS SHALL NOT BE LIABLE FOR ANY CLAIM,
-DAMAGES OR OTHER LIABILITY ARISING FROM THE SOFTWARE OR ITS USE.
+## Personal Uses
 
-This is a custom source-available license, not an open-source license.
+Personal use for research, experiment, and testing for the benefit of public knowledge, personal study, private entertainment, hobby projects, amateur pursuits, or religious observance, without any anticipated commercial application, is use for a permitted purpose.
+
+## Noncommercial Organizations
+
+Use by any charitable organization, educational institution, public research organization, public safety or health organization, environmental protection organization, or government institution is use for a permitted purpose regardless of the source of funding or obligations resulting from the funding.
+
+## Fair Use
+
+You may have "fair use" rights for the software under the law. These terms do not limit them.
+
+## No Other Rights
+
+These terms do not allow you to sublicense or transfer any of your licenses to anyone else, or prevent the licensor from granting licenses to anyone else.  These terms do not imply any other licenses.
+
+## Patent Defense
+
+If you make any written claim that the software infringes or contributes to infringement of any patent, your patent license for the software granted under these terms ends immediately. If your company makes such a claim, your patent license ends immediately for work on behalf of your company.
+
+## Violations
+
+The first time you are notified in writing that you have violated any of these terms, or done anything with the software not covered by your licenses, your licenses can nonetheless continue if you come into full compliance with these terms, and take practical steps to correct past violations, within 32 days of receiving notice.  Otherwise, all your licenses end immediately.
+
+## No Liability
+
+***As far as the law allows, the software comes as is, without any warranty or condition, and the licensor will not be liable to you for any damages arising out of these terms or the use or nature of the software, under any kind of legal claim.***
+
+## Definitions
+
+The **licensor** is the individual or entity offering these terms, and the **software** is the software the licensor makes available under these terms.
+
+**You** refers to the individual or entity agreeing to these terms.
+
+**Your company** is any legal entity, sole proprietorship, or other kind of organization that you work for, plus all organizations that have control over, are under the control of, or are under common control with that organization.  **Control** means ownership of substantially all the assets of an entity, or the power to direct its management and policies by vote, contract, or otherwise.  Control can be direct or indirect.
+
+**Your licenses** are all the licenses granted to you for the software under these terms.
+
+**Use** means anything you do with the software requiring one of your licenses.

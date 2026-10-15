@@ -1,9 +1,9 @@
 # Contributing to Hardboard
 
 Read [LICENSE](LICENSE) before using or contributing code. This is a
-source-available project with noncommercial study permissions, not an open-source
-project. GitHub forks for study and upstream contributions are allowed; they are
-not permission to publish a hosted copy or sell the project.
+source-available project under the PolyForm Noncommercial License 1.0.0, not an
+open-source project. Forks for study and upstream contributions are allowed;
+using or selling the project commercially is not.
 
 Open an issue before a substantial change. Describe the problem and keep pull
 requests focused. Use a short-lived branch such as `fix/print-layout` or
@@ -31,5 +31,5 @@ Do not commit secrets, real resumes, personal data, dependency folders, design
 exports or internal planning documents. Use synthetic examples and keep `.env`
 files local. Report vulnerabilities privately as described in [SECURITY.md](SECURITY.md).
 
-Contributors retain copyright in their contributions and grant the permissions
-specified in the license. Submit only material you have the right to contribute.
+Contributors retain copyright in their contributions and license them under the
+same PolyForm Noncommercial terms. Submit only material you have the right to contribute.

@@ -38,8 +38,8 @@ Open `http://127.0.0.1:5500`. Python is optional and is only used here as a stat
 file server. There is no installation or build command for the frontend.
 
 To export a resume, open the editor, choose **Download PDF**, then select
-**Save as PDF** in the browser's print dialog. Review the print preview and turn
-off browser headers and footers if they appear.
+**Save as PDF** in the browser's print dialog. Review the print preview; print styles remove
+browser headers and footers.
 
 ## Project layout
 
@@ -108,13 +108,17 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the contribution workflow and
 
 Copyright (c) 2026 Uriel Ezequiel Ortiz Rosales.
 
-Hardboard is **source-available, not open source**. The custom
-[Hardboard Study License](LICENSE) permits noncommercial study, local personal
-use and private modifications. GitHub forks and contributions to this repository
-are permitted under the license's GitHub exception.
+Hardboard is licensed under the
+[PolyForm Noncommercial License 1.0.0](LICENSE). You may read, study, run,
+modify and redistribute the code for any noncommercial purpose, such as personal
+study, research and hobby projects. You may not use it to make money or sell it.
+Commercial use requires the author's written permission.
 
-Commercial use, selling the software, public hosted copies and redistribution
-outside that exception require the author's written permission. Keep attribution
-and license notices intact. Your resume data remains yours, and you may share
-resumes you generate, including for job applications. Read the license for the
-complete terms; this summary does not replace it.
+This is a source-available license, not an OSI-approved open-source license.
+Keep the license text and the `Required Notice` line when you share copies. Your
+resume data remains yours, and you may share resumes you generate, including for
+job applications. Read the license for the complete terms; this summary does not
+replace it.
+
+Versions published before this license change were released under the earlier
+Hardboard Study License; copies obtained under those terms keep them.
