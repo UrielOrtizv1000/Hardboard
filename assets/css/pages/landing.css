@@ -21,15 +21,18 @@
   padding: 96px var(--gutter);
 }
 
-/* Línea pequeña sobre el título: "CV estilo Harvard • Gratis" */
+/* Línea pequeña sobre el título: "Welcome to **Hardboard.**" (se escribe tal cual, sin mayúsculas forzadas) */
 .kicker {
   display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 10.5px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  align-items: baseline;
+  gap: 6px;
+  font-size: 13px;
   color: var(--muted);
+}
+
+.kicker__brand {
+  font-weight: 700;
+  color: var(--fg);
 }
 
 .hero__title {
