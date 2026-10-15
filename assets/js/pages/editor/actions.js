@@ -49,6 +49,30 @@
     HB.editorView.scrollToSection(document.getElementById('editor-panel'), id);
   }
 
+  /* ----- Menú de descarga ----- */
+
+  const downloadMenu = () => document.querySelector('[data-download-menu]');
+  const isDownloadMenuOpen = () => {
+    const menu = downloadMenu();
+    return !!menu && !menu.querySelector('.download-menu__list').hidden;
+  };
+
+  function setDownloadMenu(open) {
+    const menu = downloadMenu();
+    if (!menu) return;
+    menu.querySelector('.download-menu__list').hidden = !open;
+    menu.querySelector('.download-menu__trigger').setAttribute('aria-expanded', String(open));
+    menu.classList.toggle('is-open', open);
+  }
+
+  // Se cierra al hacer clic fuera o con Escape
+  document.addEventListener('click', (event) => {
+    if (!event.target.closest('[data-download-menu]')) setDownloadMenu(false);
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') setDownloadMenu(false);
+  });
+
   /* ----- Acciones ----- */
 
   const HANDLERS = {
@@ -58,11 +82,15 @@
     'view': (d) => store.setUi({ view: d.view }),
     'font': (d) => store.mutateCv((cv) => { cv.font = d.font; }),
 
+    // Menú "Download": se despliega hacia abajo con PDF y DOCX
+    'toggle-download': () => setDownloadMenu(!isDownloadMenuOpen()),
+
     // Descarga directa (sin diálogo de impresión); el archivo lleva el nombre del usuario
     'download': async (d, trigger) => {
       if (trigger.disabled) return;
       trigger.disabled = true;
       trigger.classList.add('is-busy');
+      setDownloadMenu(false);
       try {
         await HB.cvExport.download(d.format, store.getState().cv);
       } catch (error) {

@@ -37,6 +37,7 @@ HB.i18n.register('es', {
     docTitle: 'Editor — Hardboard.',
     download: 'Descargar PDF',
     downloadDocx: 'Descargar DOCX',
+    downloadMenu: 'Descargar',
     exportError: 'No se pudo generar el archivo. Revisa tu conexión e inténtalo de nuevo.',
     edit: 'Editar',
     preview: 'Vista previa',
