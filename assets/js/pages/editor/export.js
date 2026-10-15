@@ -527,6 +527,76 @@
     return d.Packer.toBlob(document);
   }
 
+  /* ----- Entrega en móvil -----
+     En iOS y en navegadores integrados (WhatsApp, Instagram…) el clic
+     automático de descarga se bloquea cuando ocurre tras esperar a que
+     carguen las librerías: el "toque" del usuario ya caducó. Por eso, en
+     móvil se muestra un diálogo con un botón real que el usuario toca. */
+
+  const isMobile = () => /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
+    || (/Macintosh/i.test(navigator.userAgent) && navigator.maxTouchPoints > 1);
+
+  let activeDialog = null;
+
+  function closeDialog() {
+    if (!activeDialog) return;
+    URL.revokeObjectURL(activeDialog.url);
+    activeDialog.node.remove();
+    activeDialog = null;
+  }
+
+  function showMobileDialog(blob, filename) {
+    closeDialog();
+    const lang = HB.preferences.get().lang;
+    const tr = (key) => HB.i18n.t('editor.' + key, lang);
+    const url = URL.createObjectURL(blob);
+    const file = typeof File === 'function' ? new File([blob], filename, { type: blob.type }) : null;
+    const canShare = Boolean(file && navigator.canShare && navigator.canShare({ files: [file] }));
+
+    const node = document.createElement('div');
+    node.className = 'file-dialog';
+    node.setAttribute('role', 'dialog');
+    node.setAttribute('aria-modal', 'true');
+    node.innerHTML = '<div class="file-dialog__box">'
+      + '<p class="file-dialog__title"></p>'
+      + '<p class="file-dialog__name"></p>'
+      + '<div class="file-dialog__actions"></div></div>';
+    node.querySelector('.file-dialog__title').textContent = tr('fileReady');
+    node.querySelector('.file-dialog__name').textContent = filename;
+    const actions = node.querySelector('.file-dialog__actions');
+
+    if (canShare) {
+      const share = document.createElement('button');
+      share.type = 'button';
+      share.className = 'btn-solid';
+      share.textContent = tr('shareFile');
+      share.addEventListener('click', () => {
+        navigator.share({ files: [file], title: filename }).catch(() => {});
+      });
+      actions.appendChild(share);
+    }
+
+    const save = document.createElement('a');
+    save.className = canShare ? 'btn-mono' : 'btn-solid';
+    save.href = url;
+    save.download = filename;
+    save.textContent = tr('saveFile');
+    // iOS ignora a veces "download" con blobs: abrir en otra pestaña permite guardarlo
+    if (/iPhone|iPad|iPod|Macintosh/i.test(navigator.userAgent)) save.target = '_blank';
+    actions.appendChild(save);
+
+    const close = document.createElement('button');
+    close.type = 'button';
+    close.className = 'btn-mono';
+    close.textContent = tr('close');
+    close.addEventListener('click', closeDialog);
+    actions.appendChild(close);
+
+    node.addEventListener('click', (event) => { if (event.target === node) closeDialog(); });
+    document.body.appendChild(node);
+    activeDialog = { node, url };
+  }
+
   /* ----- API pública ----- */
 
   const BUILDERS = { pdf: buildPdf, docx: buildDocx };
@@ -538,8 +608,10 @@
   async function download(kind, cv) {
     if (!BUILDERS[kind]) throw new Error('Formato desconocido: ' + kind);
     await loadLibrary(kind);
-    const blob = await BUILDERS[kind](cv);
-    saveBlob(new Blob([blob], { type: MIME[kind] }), fileBase(cv) + '.' + kind);
+    const blob = new Blob([await BUILDERS[kind](cv)], { type: MIME[kind] });
+    const filename = fileBase(cv) + '.' + kind;
+    if (isMobile()) showMobileDialog(blob, filename);
+    else saveBlob(blob, filename);
   }
 
   HB.cvExport = { download, fileBase, buildPdf };
