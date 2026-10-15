@@ -1,0 +1,62 @@
+/* ==========================================================================
+   IMPRESIÓN / EXPORTAR A PDF (editor.html)
+   Al imprimir solo debe salir la hoja del CV: sin cabecera, sin formulario,
+   sin marcas de página y sin el escalado de pantalla.
+   Elementos con [data-noprint] se ocultan por completo.
+   ========================================================================== */
+
+@page {
+  size: letter;
+  margin: 0.5in 0.6in;
+}
+
+@media print {
+  html,
+  body {
+    height: auto !important;
+    overflow: visible !important;
+    background: #fff !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  [data-noprint] {
+    display: none !important;
+  }
+
+  /* Aplana los contenedores del layout de aplicación */
+  .app,
+  .app__body,
+  .panel-preview,
+  .preview-stage,
+  .sheet-scaler__wrap,
+  .sheet-scaler__inner {
+    display: block !important;
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    transform: none !important;
+    background: #fff !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  /* La hoja ocupa todo el ancho útil del papel; los márgenes los da @page */
+  .cv-sheet {
+    width: auto !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+  }
+
+  /* Sin recuadros de selección sobre las secciones */
+  .cv-block,
+  .cv-block.is-active {
+    outline: none !important;
+  }
+}

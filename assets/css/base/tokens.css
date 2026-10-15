@@ -1,0 +1,51 @@
+/* ==========================================================================
+   TOKENS DE DISEÑO
+   Única fuente de verdad para colores, tipografías y medidas globales.
+   El tema se controla con el atributo <html data-theme="light|dark">.
+   ========================================================================== */
+
+:root {
+  /* --- Colores (tema claro, por defecto) --- */
+  --bg: #fff;                          /* Fondo principal */
+  --fg: #111;                          /* Texto y trazos principales */
+  --muted: #666;                       /* Texto secundario */
+  --line: #e6e6e6;                     /* Separadores suaves */
+  --line-strong: #d4d4d4;              /* Bordes de controles */
+  --paper: #f4f4f2;                    /* Fondo del área de vista previa */
+  --glass: rgba(255, 255, 255, .94);   /* Cabecera translúcida */
+  --glass-paper: rgba(244, 244, 242, .94);
+
+  /* --- Colores de estado (iguales en ambos temas) --- */
+  --status-ok: oklch(0.68 0.17 145);   /* Punto verde "gratis / guardado" */
+  --danger: #c0392b;                   /* Acciones destructivas */
+  --on-danger: #fff;
+
+  /* --- Tipografía --- */
+  --font-sans: 'Geist', Helvetica, Arial, sans-serif;
+  --font-mono: 'Geist Mono', monospace;
+
+  /* --- Espaciado / layout --- */
+  --gutter: clamp(20px, 4vw, 56px);         /* Margen lateral de la landing */
+  --gutter-panel: clamp(18px, 2.6vw, 32px); /* Margen lateral del panel del editor */
+  --gutter-preview: clamp(16px, 2.6vw, 40px);
+  --page-max: 1320px;
+
+  /* --- Movimiento --- */
+  --ease-out: cubic-bezier(.3, .7, .2, 1);
+
+  color-scheme: light;
+}
+
+/* Tema oscuro: solo se redefinen los tokens que cambian */
+html[data-theme="dark"] {
+  --bg: #0f0f0f;
+  --fg: #ededed;
+  --muted: #9a9a9a;
+  --line: #262626;
+  --line-strong: #3a3a3a;
+  --paper: #171717;
+  --glass: rgba(15, 15, 15, .92);
+  --glass-paper: rgba(23, 23, 23, .92);
+
+  color-scheme: dark;
+}

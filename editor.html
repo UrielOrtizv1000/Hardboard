@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="editor.docTitle">Editor — Hardboard.</title>
+
+  <!-- Tipografías (Geist / Geist Mono) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Aplica tema/idioma guardados ANTES de pintar (evita parpadeo) -->
+  <script src="assets/js/theme-init.js"></script>
+
+  <!-- Estilos: compartidos + específicos del editor + impresión -->
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/pages/editor.css">
+  <link rel="stylesheet" href="assets/css/print.css">
+</head>
+
+<body>
+  <!-- data-view controla qué panel se ve en pantallas angostas (edit | preview) -->
+  <div class="app" id="app" data-view="edit">
+
+    <!-- =====================================================================
+         CABECERA (no se imprime)
+         ===================================================================== -->
+    <header class="site-header site-header--app" data-noprint>
+      <div class="site-header__inner">
+        <a class="brand" href="index.html">Hardboard.</a>
+
+        <nav class="nav" aria-label="Principal">
+          <a class="nav__link" href="index.html" data-i18n="common.home">Inicio</a>
+          <a class="nav__link" href="editor.html" aria-current="page" data-i18n="common.editor">Editor</a>
+        </nav>
+
+        <div class="site-header__tools">
+          <div class="lang-switch" role="group" aria-label="Idioma / Language">
+            <span class="lang-switch__thumb" aria-hidden="true"></span>
+            <button type="button" class="lang-switch__btn" data-action="set-lang" data-lang="es" aria-pressed="true">ES</button>
+            <button type="button" class="lang-switch__btn" data-action="set-lang" data-lang="en" aria-pressed="false">EN</button>
+          </div>
+
+          <button type="button" class="theme-toggle" data-action="toggle-theme">
+            <span class="theme-toggle__icons">
+              <svg class="theme-toggle__icon theme-toggle__icon--sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg>
+              <svg class="theme-toggle__icon theme-toggle__icon--moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>
+            </span>
+          </button>
+
+          <!-- Abre el diálogo de impresión → "Guardar como PDF" -->
+          <button type="button" class="link-cta link-cta--sm" data-action="print">
+            <span aria-hidden="true">→</span>
+            <span class="link-cta__label" data-i18n="editor.download">Descargar PDF</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Pestañas Editar / Vista previa (solo visibles en pantallas angostas) -->
+      <div class="view-tabs" role="tablist">
+        <button type="button" class="view-tabs__btn" role="tab" data-action="view" data-view="edit" aria-selected="true" data-i18n="editor.edit">Editar</button>
+        <button type="button" class="view-tabs__btn" role="tab" data-action="view" data-view="preview" aria-selected="false" data-i18n="editor.preview">Vista previa</button>
+      </div>
+    </header>
+
+    <main class="app__body">
+
+      <!-- ===================================================================
+           PANEL IZQUIERDO: FORMULARIO (no se imprime)
+           El acordeón de secciones lo dibuja js/pages/editor/editor-view.js
+           =================================================================== -->
+      <aside class="panel-editor" id="editor-panel" data-noprint>
+        <div class="panel-editor__intro">
+          <div class="panel-editor__status">
+            <span data-i18n="editor.autosaved">Se guarda solo</span>
+            <span class="status-dot" aria-hidden="true"></span>
+          </div>
+
+          <h1 class="panel-editor__title">
+            <span data-i18n="editor.h1a">Llena, ordena,</span>
+            <strong data-i18n="editor.h1b">descarga.</strong>
+          </h1>
+
+          <div class="panel-editor__tools">
+            <!-- El texto de este botón cambia a "¿Seguro?" (lo gestiona main.js) -->
+            <button type="button" class="btn-mono" data-action="blank" data-i18n="editor.blank">Hoja en blanco</button>
+            <button type="button" class="btn-mono" data-action="sample" data-i18n="editor.loadSample">Cargar ejemplo</button>
+          </div>
+        </div>
+
+        <div class="panel-editor__sections">
+          <div id="editor-sections"></div>
+
+          <!-- Añadir sección opcional -->
+          <div class="add-section">
+            <div class="add-section__label" data-i18n="editor.addOptional">Añadir sección opcional</div>
+            <div class="add-section__grid">
+              <button type="button" class="btn-option" data-action="add-section" data-type="skills" data-i18n="editor.addSkills">+ Habilidades</button>
+              <button type="button" class="btn-option" data-action="add-section" data-type="projects" data-i18n="editor.addProjects">+ Proyectos</button>
+              <button type="button" class="btn-option" data-action="add-section" data-type="courses" data-i18n="editor.addCourses">+ Cursos e idiomas</button>
+              <button type="button" class="btn-option" data-action="add-section" data-type="custom" data-i18n="editor.addCustom">+ Sección libre</button>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ===================================================================
+           PANEL DERECHO: VISTA PREVIA (lo único que se imprime)
+           =================================================================== -->
+      <section class="panel-preview" id="preview-panel">
+        <div class="preview-bar" data-noprint>
+          <div class="preview-bar__group">
+            <span class="preview-bar__title" data-i18n="editor.preview">Vista previa</span>
+            <span id="page-label"></span>
+          </div>
+
+          <!-- Selector de tipografía de la hoja -->
+          <div class="preview-bar__group preview-bar__group--fonts">
+            <span class="preview-bar__fonts-label" data-i18n="editor.font">Letra</span>
+            <button type="button" class="btn-chip" data-action="font" data-font="arial" aria-pressed="true">Arial</button>
+            <button type="button" class="btn-chip" data-action="font" data-font="times" aria-pressed="false">Times</button>
+            <button type="button" class="btn-chip" data-action="font" data-font="georgia" aria-pressed="false">Georgia</button>
+          </div>
+        </div>
+
+        <div class="preview-stage">
+          <div class="sheet-scaler__wrap" id="sheet-wrap">
+            <div class="sheet-scaler__inner" id="sheet-inner">
+              <div class="cv-sheet" id="cv-sheet">
+                <!-- Líneas punteadas de salto de página (solo pantalla) -->
+                <div id="cv-marks" data-noprint></div>
+                <!-- Contenido del CV dibujado por components/cv-renderer.js -->
+                <div id="cv-content"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- =====================================================================
+       SCRIPTS (el orden importa: núcleo → idiomas → datos → componentes → editor)
+       ===================================================================== -->
+  <script src="assets/js/core/namespace.js"></script>
+  <script src="assets/js/core/utils.js"></script>
+  <script src="assets/js/core/storage.js"></script>
+  <script src="assets/js/core/i18n.js"></script>
+  <script src="assets/js/i18n/es.js"></script>
+  <script src="assets/js/i18n/en.js"></script>
+  <script src="assets/js/core/preferences.js"></script>
+
+  <script src="assets/js/data/cv-model.js"></script>
+  <script src="assets/js/data/sample-cv.js"></script>
+
+  <script src="assets/js/components/header-controls.js"></script>
+  <script src="assets/js/components/cv-renderer.js"></script>
+  <script src="assets/js/components/sheet-scaler.js"></script>
+
+  <script src="assets/js/pages/editor/store.js"></script>
+  <script src="assets/js/pages/editor/editor-view.js"></script>
+  <script src="assets/js/pages/editor/actions.js"></script>
+  <script src="assets/js/pages/editor/main.js"></script>
+</body>
+</html>

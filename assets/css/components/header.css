@@ -1,0 +1,75 @@
+/* ==========================================================================
+   COMPONENTE: CABECERA DEL SITIO
+   Modificadores:
+     .site-header--sticky  → landing (fija arriba, translúcida)
+     .site-header--app     → editor (ocupa su alto, no se desplaza)
+   ========================================================================== */
+
+.site-header {
+  background: var(--glass);
+  border-bottom: 1px solid var(--line);
+}
+
+.site-header--sticky {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(6px);
+}
+
+.site-header--app {
+  flex: none;
+  background: var(--bg);
+}
+
+.site-header__inner {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 18px var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.site-header--app .site-header__inner {
+  max-width: none;
+  padding: 16px clamp(16px, 3vw, 32px);
+  gap: 20px;
+}
+
+/* Agrupa idioma + tema + CTA a la derecha */
+.site-header__tools {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+
+/* --- Navegación principal --- */
+.nav {
+  display: flex;
+  gap: 28px;
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.nav__link {
+  text-decoration: none;
+  padding-top: 3.5px;
+}
+
+/* Enlace de la página actual: línea superior */
+.nav__link[aria-current="page"] {
+  border-top: 1.5px solid var(--fg);
+  padding-top: 2px;
+}

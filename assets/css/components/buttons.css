@@ -1,0 +1,119 @@
+/* ==========================================================================
+   COMPONENTES: BOTONES Y ENLACES DE ACCIÓN
+   ========================================================================== */
+
+/* --- Enlace con flecha y subrayado (CTA principal del sitio) ---
+   Estructura: <a class="link-cta"><span>→</span><span class="link-cta__label">Texto</span></a> */
+.link-cta {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.link-cta__label {
+  border-bottom: 1.5px solid var(--fg);
+  padding-bottom: 1px;
+}
+
+.link-cta--sm      { font-size: 13.5px; }
+.link-cta--lg      { font-size: 15px; }
+.link-cta--regular { font-weight: 500; }
+
+/* --- Botón sólido (donaciones) --- */
+.btn-solid {
+  flex: none;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 11px 20px;
+  background: var(--fg);
+  color: var(--bg);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity .2s, transform .2s;
+}
+
+.btn-solid:hover {
+  opacity: .85;
+  transform: translateY(-1px);
+}
+
+/* --- Botón de texto en monoespaciada (acciones secundarias del editor) --- */
+.btn-mono {
+  padding: 4px 6px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.btn-mono:hover {
+  color: var(--fg);
+}
+
+/* Variante para flechas / iconos (↑ ↓ ✕) */
+.btn-mono--icon {
+  font-size: 12px;
+  letter-spacing: 0;
+}
+
+/* Variante destructiva: se rellena en rojo al pasar el cursor */
+.btn-mono--danger {
+  color: var(--danger);
+  transition: background .15s, color .15s;
+}
+
+.btn-mono--danger:hover {
+  background: var(--danger);
+  color: var(--on-danger);
+}
+
+/* --- Botón de borde punteado ("+ Añadir …") --- */
+.btn-dashed {
+  width: 100%;
+  padding: 11px;
+  border: 1px dashed var(--line-strong);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.btn-dashed:hover {
+  border-color: var(--fg);
+}
+
+/* --- Botón de opción en rejilla (agregar sección) --- */
+.btn-option {
+  padding: 12px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  text-align: left;
+  font-size: 13.5px;
+}
+
+.btn-option:hover {
+  border-color: var(--fg);
+}
+
+/* --- Chip alternable (selector de tipografía del CV) --- */
+.btn-chip {
+  padding: 4px 8px;
+  border: 1px solid var(--fg);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg);
+}
+
+.btn-chip[aria-pressed="true"] {
+  background: var(--fg);
+  color: var(--bg);
+}

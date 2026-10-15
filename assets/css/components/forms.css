@@ -1,0 +1,63 @@
+/* ==========================================================================
+   COMPONENTES: FORMULARIOS DEL EDITOR
+   ========================================================================== */
+
+/* Campo = etiqueta + control */
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.field__label {
+  margin-bottom: 6px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Input y textarea comparten estilo */
+.input {
+  width: 100%;
+  padding: 9px 11px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 0;
+  outline: none;
+  font-size: 14px;
+  color: var(--fg);
+}
+
+.input:focus {
+  border-color: var(--fg);
+}
+
+textarea.input {
+  min-height: 72px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.input--compact   { font-size: 13.5px; }                 /* Filas de contacto */
+.input--title     { font-weight: 600; text-transform: uppercase; } /* Título de sección */
+.input--area-md   { min-height: 96px; }
+.input--area-lg   { min-height: 130px; }
+
+/* --- Filas de varios campos (rejilla) --- */
+.field-row {
+  display: grid;
+  gap: 8px;
+}
+
+.field-row--wide-narrow  { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); }
+.field-row--narrow-wide  { grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); }
+.field-row--link-date    { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); }
+.field-row--label-value  { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); }
+
+/* Fila de contacto: texto + enlace + botón quitar */
+.field-row--contact {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+  gap: 6px;
+  align-items: center;
+}

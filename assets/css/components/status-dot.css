@@ -1,0 +1,12 @@
+/* ==========================================================================
+   COMPONENTE: PUNTO DE ESTADO
+   Círculo verde junto a textos como "Gratis" o "Se guarda solo".
+   ========================================================================== */
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--status-ok);
+}
