@@ -149,7 +149,6 @@
       + '<div class="photo-field">' + thumb
       + actionButton('photo-pick', {}, esc(tr(hasPhoto ? 'photoChange' : 'photoUpload')), 'btn-dashed photo-field__pick')
       + remove
-      + '<input type="file" id="photo-input" accept="image/*" hidden>'
       + '</div></div>';
   }
 

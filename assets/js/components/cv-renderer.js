@@ -297,9 +297,16 @@
   }
 
   /** Foto circular de la cabecera Vitae (solo se admiten data URL de imagen). */
-  function vitaePhoto(photo) {
+  const UPLOAD_ICON = '<svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V5M7.5 9.5 12 5l4.5 4.5M5 15v3.5A1.5 1.5 0 0 0 6.5 20h11a1.5 1.5 0 0 0 1.5-1.5V15"/></svg>';
+
+  /** En el editor la foto es clicable: abre el selector de archivos (acción photo-pick). */
+  function vitaePhoto(photo, ctx) {
     const src = typeof photo === 'string' && /^data:image\/(jpeg|png|webp);base64,/i.test(photo) ? photo : '';
-    return '<div class="vt-photo">' + (src ? '<img src="' + esc(src) + '" alt="">' : '') + '</div>';
+    const attrs = ctx.interactive ? ' data-action="photo-pick" role="button" tabindex="0" title="' + esc(ctx.tr(src ? 'photoChange' : 'photoUpload')) + '"' : '';
+    const content = src
+      ? '<img src="' + esc(src) + '" alt="">'
+      : (ctx.interactive ? '<span class="vt-photo__icon" data-noprint>' + UPLOAD_ICON + '</span>' : '');
+    return '<div class="vt-photo' + (ctx.interactive ? ' vt-photo--action' : '') + '"' + attrs + '>' + content + '</div>';
   }
 
   function nameHtml(personal, cls, ctx) {
@@ -311,7 +318,7 @@
   function renderVitaeHeader(cv, ctx) {
     const p = cv.personal;
     const tagline = hasText(p.tagline) ? '<div class="vt-tagline">' + esc(p.tagline) + '</div>' : '';
-    return block('personal', nameHtml(p, 'vt-name', ctx) + tagline + vitaePhoto(p.photo), ctx, 'vt-header');
+    return block('personal', nameHtml(p, 'vt-name', ctx) + tagline + vitaePhoto(p.photo, ctx), ctx, 'vt-header');
   }
 
   function renderGenericHeader(cv, ctx) {

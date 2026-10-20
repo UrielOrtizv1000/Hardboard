@@ -135,10 +135,19 @@
   });
 
   // Foto de perfil (selector de archivo del formulario)
-  el.editorPanel.addEventListener('change', (event) => {
+  document.addEventListener('change', (event) => {
     if (event.target.id === 'photo-input') {
       HB.editorActions.setPhoto(event.target.files[0]);
       event.target.value = '';
+    }
+  });
+
+  // Enter / Espacio sobre la foto (div con role=button)
+  document.addEventListener('keydown', (event) => {
+    const photo = event.target.closest && event.target.closest('.vt-photo--action');
+    if (photo && (event.key === 'Enter' || event.key === ' ')) {
+      event.preventDefault();
+      HB.editorActions.dispatch('photo-pick', {}, photo);
     }
   });
 
