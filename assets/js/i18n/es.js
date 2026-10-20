@@ -136,6 +136,23 @@ HB.i18n.register('es', {
     addCourses: '+ Cursos e idiomas',
     addCustom: '+ Sección libre',
 
+    /* Plantillas y foto */
+    tplLabel: 'Plantilla',
+    tplGeneric: 'Genérico',
+    vBgLabel: 'Color del fondo',
+    cGraphite: 'Grafito',
+    cGray: 'Gris',
+    cNavy: 'Azul marino',
+    cWine: 'Vino',
+    cGreen: 'Verde',
+    cRose: 'Rosa',
+    cRetro: 'Retro',
+    photo: 'Foto',
+    photoUpload: 'Subir foto',
+    photoChange: 'Cambiar foto',
+    photoRemove: 'Quitar',
+    photoError: 'No se pudo cargar esa imagen. Prueba con otra foto.',
+
     /* Vista previa */
     font: 'Letra',
     yourName: 'Tu nombre',

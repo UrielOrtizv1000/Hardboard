@@ -32,7 +32,10 @@
     pageLabel: document.getElementById('page-label'),
     blankButton: document.querySelector('[data-action="blank"]'),
     viewTabs: document.querySelectorAll('[data-action="view"]'),
-    fontChips: document.querySelectorAll('[data-action="font"]')
+    fontChips: document.querySelectorAll('[data-action="font"]'),
+    templateChips: document.querySelectorAll('[data-action="template"]'),
+    vitaeColors: document.getElementById('vitae-colors'),
+    swatches: document.querySelectorAll('[data-action="vitae-color"]')
   };
 
   const tr = (key) => HB.i18n.t('editor.' + key);
@@ -76,6 +79,11 @@
 
     el.viewTabs.forEach((tab) => tab.setAttribute('aria-selected', String(tab.dataset.view === state.view)));
     el.fontChips.forEach((chip) => chip.setAttribute('aria-pressed', String(chip.dataset.font === (state.cv.font || 'arial'))));
+
+    const template = HB.cvModel.templateOf(state.cv);
+    el.templateChips.forEach((chip) => chip.setAttribute('aria-pressed', String(chip.dataset.tpl === template)));
+    el.vitaeColors.hidden = template !== 'vitae';
+    el.swatches.forEach((swatch) => swatch.setAttribute('aria-pressed', String(swatch.dataset.vc === (state.cv.vitaeColor || 'graphite'))));
 
     el.blankButton.textContent = state.armBlank ? tr('sure') : tr('blank');
   }
@@ -124,6 +132,14 @@
   el.editorPanel.addEventListener('input', (event) => {
     const field = event.target.closest('[data-field]');
     if (field) HB.editorActions.updateField(field);
+  });
+
+  // Foto de perfil (selector de archivo del formulario)
+  el.editorPanel.addEventListener('change', (event) => {
+    if (event.target.id === 'photo-input') {
+      HB.editorActions.setPhoto(event.target.files[0]);
+      event.target.value = '';
+    }
   });
 
   // Clic en cualquier elemento con data-action

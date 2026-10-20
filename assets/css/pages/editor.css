@@ -82,6 +82,49 @@
   margin: 16px 0 0 -6px;
 }
 
+/* --- Plantilla y color de la hoja --- */
+.panel-editor__option {
+  margin-top: 20px;
+}
+
+.panel-editor__option[hidden] {
+  display: none;
+}
+
+.panel-editor__option-label {
+  margin-bottom: 8px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.template-picker {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.swatch {
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 2px solid var(--line-strong);
+  border-radius: 50%;
+  background: var(--swatch);
+}
+
+.swatch[aria-pressed="true"] {
+  border-color: var(--fg);
+}
+
 .panel-editor__sections {
   padding: 0 var(--gutter-panel);
 }

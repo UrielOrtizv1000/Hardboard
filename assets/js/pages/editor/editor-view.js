@@ -137,9 +137,26 @@
       + '</div>';
   }
 
-  function renderPersonalBody(personal) {
+  /** Foto de la cabecera (solo plantilla Vitae): subir, cambiar o quitar. */
+  function renderPhotoField(personal) {
+    const hasPhoto = /^data:image\//.test(personal.photo || '');
+    const thumb = '<span class="photo-field__thumb">' + (hasPhoto ? '<img src="' + esc(personal.photo) + '" alt="">' : '') + '</span>';
+    const remove = hasPhoto
+      ? actionButton('photo-remove', {}, esc(tr('photoRemove')), 'btn-mono btn-mono--danger')
+      : '';
+    return '<div class="field">'
+      + '<div class="field__label">' + esc(tr('photo')) + '</div>'
+      + '<div class="photo-field">' + thumb
+      + actionButton('photo-pick', {}, esc(tr(hasPhoto ? 'photoChange' : 'photoUpload')), 'btn-dashed photo-field__pick')
+      + remove
+      + '<input type="file" id="photo-input" accept="image/*" hidden>'
+      + '</div></div>';
+  }
+
+  function renderPersonalBody(personal, template) {
     const contacts = (personal.contacts || []).map(renderContactRow).join('');
     return renderLayout(PERSONAL_LAYOUT, { sec: 'personal' }, personal)
+      + (template === 'vitae' ? renderPhotoField(personal) : '')
       + '<div class="field">'
       + '<div class="field__label">' + esc(tr('contacts')) + '</div>'
       + '<div class="contact-list">' + contacts + '</div>'
@@ -225,7 +242,7 @@
       isOpen: openId === 'personal',
       badges: badge(tr('required')),
       mover: '',
-      body: renderPersonalBody(cv.personal)
+      body: renderPersonalBody(cv.personal, HB.cvModel.templateOf(cv))
     });
   }
 

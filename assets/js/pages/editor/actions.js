@@ -49,6 +49,44 @@
     HB.editorView.scrollToSection(document.getElementById('editor-panel'), id);
   }
 
+  /** Conserva plantilla y color al reemplazar el contenido (el usuario no los "pierde"). */
+  function keepLook(next) {
+    const current = store.getState().cv;
+    next.template = HB.cvModel.templateOf(current);
+    next.vitaeColor = current.vitaeColor;
+    return next;
+  }
+
+  /**
+   * Foto de perfil: recorte cuadrado centrado y reducido a 400px (JPEG), para
+   * que ocupe poco en localStorage y en el PDF/DOCX.
+   */
+  const PHOTO_SIZE = 400;
+
+  function readPhoto(file) {
+    return new Promise((resolve, reject) => {
+      const url = URL.createObjectURL(file);
+      const img = new Image();
+      img.onload = () => {
+        const side = Math.min(img.naturalWidth, img.naturalHeight);
+        const canvas = document.createElement('canvas');
+        canvas.width = canvas.height = Math.min(PHOTO_SIZE, side);
+        canvas.getContext('2d').drawImage(
+          img,
+          (img.naturalWidth - side) / 2, (img.naturalHeight - side) / 2, side, side,
+          0, 0, canvas.width, canvas.height
+        );
+        URL.revokeObjectURL(url);
+        resolve(canvas.toDataURL('image/jpeg', 0.85));
+      };
+      img.onerror = () => {
+        URL.revokeObjectURL(url);
+        reject(new Error('Imagen no válida'));
+      };
+      img.src = url;
+    });
+  }
+
   /* ----- Menú de descarga ----- */
 
   const downloadMenu = () => document.querySelector('[data-download-menu]');
@@ -81,6 +119,17 @@
     'open-section': (d) => openAndReveal(d.sec, isNarrow() ? { view: 'edit' } : {}),
     'view': (d) => store.setUi({ view: d.view }),
     'font': (d) => store.mutateCv((cv) => { cv.font = d.font; }),
+    'template': (d) => {
+      if (HB.cvModel.TEMPLATES.indexOf(d.tpl) >= 0) store.mutateCv((cv) => { cv.template = d.tpl; });
+    },
+    'vitae-color': (d) => {
+      if (HB.cvModel.VITAE_COLORS[d.vc]) store.mutateCv((cv) => { cv.vitaeColor = d.vc; });
+    },
+    'photo-pick': () => {
+      const input = document.getElementById('photo-input');
+      if (input) input.click();
+    },
+    'photo-remove': () => store.mutateCv((cv) => { cv.personal.photo = ''; }),
 
     // Menú "Download": se despliega hacia abajo con PDF y DOCX
     'toggle-download': () => setDownloadMenu(!isDownloadMenuOpen()),
@@ -103,13 +152,13 @@
     },
 
     /* Contenido completo */
-    'sample': () => store.replaceCv(HB.sampleCv(currentLang()), { open: 'personal' }),
+    'sample': () => store.replaceCv(keepLook(HB.sampleCv(currentLang())), { open: 'personal' }),
 
     // Doble clic de seguridad: el primero "arma", el segundo (≤3s) borra todo
     'blank': () => {
       if (store.getState().armBlank) {
         clearTimeout(blankTimer);
-        store.replaceCv(HB.cvModel.blankCv(currentLang()), { armBlank: false, open: 'personal' });
+        store.replaceCv(keepLook(HB.cvModel.blankCv(currentLang())), { armBlank: false, open: 'personal' });
         return;
       }
       store.setUi({ armBlank: true });
@@ -180,5 +229,16 @@
     }, 'field');
   }
 
-  HB.editorActions = { dispatch, updateField };
+  /** Guarda la foto elegida en el selector de archivos. */
+  async function setPhoto(file) {
+    if (!file) return;
+    try {
+      const photo = await readPhoto(file);
+      store.mutateCv((cv) => { cv.personal.photo = photo; });
+    } catch (error) {
+      window.alert(HB.i18n.t('editor.photoError', currentLang()));
+    }
+  }
+
+  HB.editorActions = { dispatch, updateField, setPhoto };
 })(window.HB);

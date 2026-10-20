@@ -5,7 +5,10 @@
    Estructura del CV:
    {
      font: 'arial' | 'times' | 'georgia',
-     personal: { name, tagline, contacts: [{ id, text, url }] },
+     template: 'harvard' | 'vitae' | 'generic',   (por defecto 'harvard')
+     vitaeColor: clave de VITAE_COLORS             (solo plantilla Vitae)
+     personal: { name, tagline, photo?, contacts: [{ id, text, url }] },
+               photo = data URL de la foto (solo plantilla Vitae)
      sections: [ Section, … ]
    }
 
@@ -30,6 +33,45 @@
 
   /** Fuentes disponibles para la hoja. */
   const FONTS = ['arial', 'times', 'georgia'];
+
+  /** Plantillas de hoja disponibles. */
+  const TEMPLATES = ['harvard', 'vitae', 'generic'];
+
+  /** Colores de fondo de la cabecera Vitae (clave → hex). */
+  const VITAE_COLORS = {
+    graphite: '#3d3d3d',
+    gray: '#6b6b6b',
+    navy: '#1f3a5f',
+    wine: '#6e2636',
+    green: '#2f4f3f',
+    rose: '#a84f6b',
+    retro: '#9c4f2e'
+  };
+
+  /** Plantilla efectiva de un CV (las guardadas antes de existir esta opción son Harvard). */
+  function templateOf(cv) {
+    return TEMPLATES.indexOf(cv.template) >= 0 ? cv.template : 'harvard';
+  }
+
+  /** Hex del color Vitae elegido (grafito si la clave no existe). */
+  function vitaeHex(cv) {
+    return VITAE_COLORS[cv.vitaeColor] || VITAE_COLORS.graphite;
+  }
+
+  /**
+   * Reparto de las secciones visibles en las plantillas de dos columnas:
+   * el perfil arriba; educación, habilidades y cursos a la izquierda;
+   * experiencia y proyectos (incluidas las secciones libres) a la derecha.
+   */
+  function splitColumns(cv) {
+    const visible = cv.sections.filter((s) => !s.hidden);
+    const left = ['education', 'skills', 'courses'];
+    return {
+      top: visible.filter((s) => s.type === 'profile'),
+      left: visible.filter((s) => left.indexOf(s.type) >= 0),
+      right: visible.filter((s) => s.type !== 'profile' && left.indexOf(s.type) < 0)
+    };
+  }
 
   /** Nombre de la propiedad que contiene la lista de elementos de una sección. */
   function listKey(section) {
@@ -76,9 +118,12 @@
     const tr = (key) => HB.i18n.t('editor.' + key, lang);
     return {
       font: 'arial',
+      template: 'harvard',
+      vitaeColor: 'graphite',
       personal: {
         name: '',
         tagline: '',
+        photo: '',
         contacts: [{ id: uid(), text: '', url: '' }, { id: uid(), text: '', url: '' }]
       },
       sections: [
@@ -94,5 +139,5 @@
     return Boolean(value && value.personal && Array.isArray(value.sections));
   }
 
-  HB.cvModel = { FONTS, listKey, items, blankItem, newSection, blankCv, isValidCv };
+  HB.cvModel = { FONTS, TEMPLATES, VITAE_COLORS, templateOf, vitaeHex, splitColumns, listKey, items, blankItem, newSection, blankCv, isValidCv };
 })(window.HB);
