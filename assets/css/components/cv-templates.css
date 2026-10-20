@@ -96,6 +96,24 @@
   overflow: hidden;
 }
 
+.vt-photo--action { cursor: pointer; }
+
+.vt-photo__icon {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, .75);
+  transition: color .15s, background .15s;
+}
+
+.vt-photo--action:hover .vt-photo__icon,
+.vt-photo--action:focus-visible .vt-photo__icon {
+  color: #fff;
+  background: rgba(255, 255, 255, .12);
+}
+
 .vt-photo img {
   display: block;
   width: 100%;
