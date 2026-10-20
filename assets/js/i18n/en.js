@@ -131,6 +131,23 @@ HB.i18n.register('en', {
     addCourses: '+ Courses & languages',
     addCustom: '+ Custom section',
 
+    /* Templates and photo */
+    tplLabel: 'Template',
+    tplGeneric: 'Generic',
+    vBgLabel: 'Background color',
+    cGraphite: 'Graphite',
+    cGray: 'Gray',
+    cNavy: 'Navy',
+    cWine: 'Wine',
+    cGreen: 'Green',
+    cRose: 'Rose',
+    cRetro: 'Retro',
+    photo: 'Photo',
+    photoUpload: 'Upload photo',
+    photoChange: 'Change photo',
+    photoRemove: 'Remove',
+    photoError: 'That image could not be loaded. Try another photo.',
+
     /* Preview */
     font: 'Font',
     yourName: 'Your name',

@@ -106,6 +106,28 @@
             <button type="button" class="btn-mono btn-mono--highlight" data-action="blank" data-i18n="editor.blank">Hoja en blanco</button>
             <button type="button" class="btn-mono" data-action="sample" data-i18n="editor.loadSample">Cargar ejemplo</button>
           </div>
+          <!-- Plantilla de la hoja y, para Vitae, color de la cabecera (activación en main.js) -->
+          <div class="panel-editor__option">
+            <div class="panel-editor__option-label" data-i18n="editor.tplLabel">Plantilla</div>
+            <div class="template-picker">
+              <button type="button" class="btn-chip btn-chip--wide" data-action="template" data-tpl="harvard" aria-pressed="true">Harvard</button>
+              <button type="button" class="btn-chip btn-chip--wide" data-action="template" data-tpl="vitae" aria-pressed="false">Vitae</button>
+              <button type="button" class="btn-chip btn-chip--wide" data-action="template" data-tpl="generic" aria-pressed="false" data-i18n="editor.tplGeneric">Genérico</button>
+            </div>
+          </div>
+
+          <div class="panel-editor__option" id="vitae-colors" hidden>
+            <div class="panel-editor__option-label" data-i18n="editor.vBgLabel">Color del fondo</div>
+            <div class="swatches">
+              <button type="button" class="swatch" data-action="vitae-color" data-vc="graphite" style="--swatch:#3d3d3d" aria-pressed="false" data-i18n-aria-label="editor.cGraphite" data-i18n-title="editor.cGraphite"></button>
+              <button type="button" class="swatch" data-action="vitae-color" data-vc="gray" style="--swatch:#6b6b6b" aria-pressed="false" data-i18n-aria-label="editor.cGray" data-i18n-title="editor.cGray"></button>
+              <button type="button" class="swatch" data-action="vitae-color" data-vc="navy" style="--swatch:#1f3a5f" aria-pressed="false" data-i18n-aria-label="editor.cNavy" data-i18n-title="editor.cNavy"></button>
+              <button type="button" class="swatch" data-action="vitae-color" data-vc="wine" style="--swatch:#6e2636" aria-pressed="false" data-i18n-aria-label="editor.cWine" data-i18n-title="editor.cWine"></button>
+              <button type="button" class="swatch" data-action="vitae-color" data-vc="green" style="--swatch:#2f4f3f" aria-pressed="false" data-i18n-aria-label="editor.cGreen" data-i18n-title="editor.cGreen"></button>
+              <button type="button" class="swatch" data-action="vitae-color" data-vc="rose" style="--swatch:#a84f6b" aria-pressed="false" data-i18n-aria-label="editor.cRose" data-i18n-title="editor.cRose"></button>
+              <button type="button" class="swatch" data-action="vitae-color" data-vc="retro" style="--swatch:#9c4f2e" aria-pressed="false" data-i18n-aria-label="editor.cRetro" data-i18n-title="editor.cRetro"></button>
+            </div>
+          </div>
         </div>
 
         <div class="panel-editor__sections">
